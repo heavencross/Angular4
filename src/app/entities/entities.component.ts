@@ -11,7 +11,7 @@ export class EntitiesComponent implements OnInit {
 
   public heading = 'My Entities';
   public entities: any[];
-  private selectedEntity: {};
+  public selectedEntity: {};
   public totalItems;
   public currentPage = 1;
   public smallnumPages = 0;
@@ -74,7 +74,6 @@ export class EntitiesComponent implements OnInit {
 
   public pageChanged(event: any): void {
     console.log('Page changed to: ' + event.currentPage);
-    console.log('Number items per page: ' + event.itemsPerPage);
   }
 
   public rowToggle(event: any, index: number): void {

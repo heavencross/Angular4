@@ -31,4 +31,37 @@ describe('EntitiesComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+  
+  it('should would..', () => {
+    component.ngOnInit();
+    expect(component.entities).not.toBeDefined();
+    expect(component.loading).toBe(true);
+  });
+  
+  it('on select..', () => {
+    let entity = {name:'name', id: 12345};
+    component.onSelect(entity);
+    expect(component.selectedEntity).toBe(entity);
+  });
+  
+  it('on page change..', () => {
+    let mockEvent = new Event('click');
+    component.pageChanged(mockEvent);
+    expect(console.log).toContain('Page changed to:')
+  });
+  
+  it('on row toggle..', () => {
+    let mockEvent = new Event('click');    
+    let icon = [true];
+    component.rowToggle(mockEvent, 0);
+    expect(icon[0]).not.toBe(false);
+  });
+
+  
+  it('on set page...', () => {
+    let pno = 10;
+    component.setPage(pno);
+    expect(component.currentPage).toBe(10);
+  });
+  
 });

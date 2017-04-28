@@ -17,7 +17,7 @@ import { Component } from '@angular/core';
 
 export class AppComponent {
 
-  title = 'Clarient Application';
+  title = 'Angular Application';
 
   constructor() { }
 
