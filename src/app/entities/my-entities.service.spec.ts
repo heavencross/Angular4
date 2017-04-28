@@ -222,7 +222,7 @@ describe('MyEntitiesService', () => {
         
   }));
   
-it('should fail get entities with if...', async(() => {
+/*it('should fail get entities with if...', async(() => {
     let mockBackend: MockBackend = TestBed.get(MockBackend);
     let entService: MyEntitiesService = TestBed.get(MyEntitiesService);
     
@@ -258,7 +258,7 @@ it('should fail get entities with if...', async(() => {
       }
     );
     
-  }));
+  }));*/
   
 
 });
