@@ -1,0 +1,86 @@
+<h3>
+  {{heading}}
+</h3>
+
+	<md-spinner *ngIf="loading" [color]="color"></md-spinner>
+	<label for="txtfilter" class="form-control"><strong>Filter Entities</strong>
+		<input id="txtfilter" class="form-control" type="text" [(ngModel)]="searchStr" placeholder="Start typing to search..." />
+	</label>
+	<table class="table">
+		<thead>
+	    <tr>
+	        <th class="" title="Legal Entity Name">LEOI Name</th>
+	        <th class="" title="Alias name">LEOI Alias</th>
+	        <th class="" title="Provider"> Provider</th>
+	        <th class="" title="Consumer">Consumer</th>
+	        <th class="" title="Services">Services</th>
+	        <th class="" title="Jurisdiction">Jurisdiction</th>
+	        <th class="">Status</th>
+	        <th class="">Formation Status</th>
+	        <th class="">Status Date</th>
+	        <th class="">Action</th>
+	    </tr>
+	    </thead>
+	    <tbody *ngFor="let entity of entities | entitiesFilter: searchStr | paginate: { id: 'server', itemsPerPage: itemsPerPage, currentPage: currentPage, totalItems: totalItems }; let i = index">
+	    	<tr>
+	    		<td class="lename">
+	        		<a class="collapser" *ngIf="entity.groupedRelationship" (click)="rowToggle($event, i)">
+	        			<i *ngIf="!groupOpen[i]" class="material-icons" [style.font-size.px]="20">add_circle_outline</i>
+	        			<i *ngIf="groupOpen[i]" class="material-icons" [style.font-size.px]="20">remove_circle_outline</i>
+	        		</a>
+	        		<a href="/entity-details?leid={{entity.leoiid}}&pid={{entity.providerid}}">{{entity.leoi}}</a>
+	        	</td>
+	        	<td class="">
+	        		{{entity.leoiOtherName}}
+	        	</td>
+	        	<td class="">
+	        		{{entity.provider}}
+	        	</td>
+	        	<td class="">
+	        		{{entity.consumer}}
+	        	</td>
+	        	<td class="">
+	        		{{entity.services}}
+	        	</td>
+	        	<td>
+	        		{{entity.country}}
+	        	</td>
+	        	<td>
+	        		{{entity.status}}
+	        	</td>
+	        	<td>
+	        		{{entity.formationStatusDesc}}
+	        	</td>
+	        	<td>
+	        		{{entity.endDate}}
+	        	</td>
+	        	<td>
+	        		<i class="material-icons" (click)="onSelect(entity)" style="cursor: pointer;">mode_edit</i>
+	        	</td>
+	    	</tr>
+	    	<ng-template [ngIf]="groupOpen[i]">
+		    	<tr class="groupedRows" *ngFor="let eachGroupedRow of entity.groupedRelationship">
+	                <td class="lename">
+	                    <a href="#">{{eachGroupedRow.leoi}}</a>
+	                </td>
+	                <td>
+	                    {{eachGroupedRow.leoiOtherName}}
+	                </td>
+	                <td>{{eachGroupedRow.provider}}</td>
+	                <td>{{eachGroupedRow.consumer}}</td>
+	                <td>{{eachGroupedRow.services}}</td>
+	                <td>{{eachGroupedRow.country}}</td>
+	                <td>{{eachGroupedRow.status}}</td>
+	                <td>{{eachGroupedRow.formationStatusDesc}}</td>
+	                <td>{{eachGroupedRow.endDate}}</td>
+	             	<td>
+	                    <i class="material-icons" (click)="onSelect(entity)" style="cursor: pointer;">mode_edit</i>
+	                </td>
+	          	</tr>
+          	</ng-template>
+	    </tbody>
+	</table>
+	<hr>
+	<pagination-controls (pageChange)="pageChanged(currentPage = $event)" id="server" 
+		previousLabel="" nextLabel="" class="text-right">
+	</pagination-controls>

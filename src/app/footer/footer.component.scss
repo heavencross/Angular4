@@ -1,0 +1,30 @@
+footer {
+	font-size: 0.8rem;
+}
+
+.icon {
+    overflow: hidden;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    text-indent: 100%;
+    white-space: nowrap;
+    width: 20px;
+    height: 20px;
+    top: -.1em;
+    vertical-align: middle;
+    font-size: 10px;
+    line-height: 1;
+}
+
+.icon-thomson-reuters-logo {
+    display: inline-block;
+    overflow: hidden;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    text-indent: 100%;
+    white-space: nowrap;
+    width: 168px;
+    height: 30px;
+    background-position: 0 -96px;
+    top: 0;
+}
