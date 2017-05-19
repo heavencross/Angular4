@@ -38,7 +38,7 @@ deploy:
   key: latest.zip
   bundle_type: zip
   application: nodejsapp
-  deployment_group: nodeappGroup
+  deployment_group: nodejsappGroup
   region: us-west-2
   on: *2
 script:
